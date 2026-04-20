@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 基础知识练习</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #4CAF50;
+            margin-top: 30px;
+        }
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .result {
+            background: #e8f5e9;
+            border-left: 4px solid #4CAF50;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 0 4px 4px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .code {
+            background: #263238;
+            color: #aed581;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript 基础知识练习</h1>
+
+    <div class="section">
+        <h2>一、变量的定义</h2>
+        <div class="code">
+// var - 函数作用域，可重复声明<br>
+var name = "张三";<br>
+// let - 块级作用域，不可重复声明<br>
+let age = 20;<br>
+// const - 常量，不可重新赋值<br>
+const PI = 3.14159;
+        </div>
+        <div id="var-demo" class="result"></div>
+    </div>
+
+    <div class="section">
+        <h2>二、变量类型</h2>
+        <div class="code">
+// 基本数据类型<br>
+let str = "字符串";           // string<br>
+let num = 42;                 // number<br>
+let flag = true;              // boolean<br>
+let empty = null;             // null<br>
+let notDefined;               // undefined<br>
+let sym = Symbol("id");       // symbol<br>
+let big = 9007199254740991n;  // bigint<br><br>
+// 引用数据类型<br>
+let arr = [1, 2, 3];          // object (数组)<br>
+let obj = {name: "李四"};      // object (对象)
+        </div>
+        <div id="type-demo" class="result"></div>
+    </div>
+
+    <div class="section">
+        <h2>三、表达式</h2>
+        <div class="code">
+// 算术表达式<br>
+let sum = 10 + 5 * 2;         // 20<br>
+let mod = 17 % 5;             // 2<br><br>
+// 比较表达式<br>
+let isEqual = (5 == "5");     // true (松散相等)<br>
+let isStrictEqual = (5 === "5"); // false (严格相等)<br><br>
+// 逻辑表达式<br>
+let logic = (true && false) || true;  // true<br><br>
+// 三元表达式<br>
+let grade = score >= 60 ? "及格" : "不及格";
+        </div>
+        <div id="expr-demo" class="result"></div>
+    </div>
+
+    <div class="section">
+        <h2>四、流程控制</h2>
+        <div class="code">
+// if-else 条件判断<br>
+if (score >= 90) {<br>
+&nbsp;&nbsp;level = "优秀";<br>
+} else if (score >= 60) {<br>
+&nbsp;&nbsp;level = "及格";<br>
+} else {<br>
+&nbsp;&nbsp;level = "不及格";<br>
+}<br><br>
+// switch 多分支<br>
+switch(day) {<br>
+&nbsp;&nbsp;case 1: result = "星期一"; break;<br>
+&nbsp;&nbsp;case 2: result = "星期二"; break;<br>
+&nbsp;&nbsp;default: result = "其他"; break;<br>
+}<br><br>
+// for 循环<br>
+for (let i = 0; i < 5; i++) { ... }<br><br>
+// while 循环<br>
+while (count > 0) { ... }<br><br>
+// for...of 遍历数组<br>
+for (let item of array) { ... }
+        </div>
+        <div id="flow-demo" class="result"></div>
+    </div>
+
+    <div class="section">
+        <h2>五、函数</h2>
+        <div class="code">
+// 函数声明<br>
+function greet(name) {<br>
+&nbsp;&nbsp;return "你好, " + name + "!";<br>
+}<br><br>
+// 函数表达式<br>
+const add = function(a, b) {<br>
+&nbsp;&nbsp;return a + b;<br>
+};<br><br>
+// 箭头函数<br>
+const multiply = (a, b) => a * b;<br><br>
+// 默认参数<br>
+function sayHello(name = "访客") {<br>
+&nbsp;&nbsp;return `欢迎, ${name}!`;<br>
+}<br><br>
+// 回调函数<br>
+function processData(arr, callback) {<br>
+&nbsp;&nbsp;return arr.map(callback);<br>
+}
+        </div>
+        <div id="func-demo" class="result"></div>
+    </div>
+
+    <script>
+        // ==================== 一、变量的定义 ====================
+        var studentName = "张三";
+        let studentAge = 20;
+        const STUDENT_ID = "2023001";
+
+        document.getElementById('var-demo').innerHTML =
+            `var name = "${studentName}" (函数作用域)<br>` +
+            `let age = ${studentAge} (块级作用域)<br>` +
+            `const ID = "${STUDENT_ID}" (常量，不可修改)`;
+
+        // ==================== 二、变量类型 ====================
+        let typeStr = "Hello JS";
+        let typeNum = 3.14;
+        let typeBool = false;
+        let typeNull = null;
+        let typeUndef;
+        let typeObj = { course: "JS基础", teacher: "王老师" };
+        let typeArr = ["HTML", "CSS", "JS"];
+
+        let typeResults = [
+            `"${typeStr}" 的类型: ${typeof typeStr}`,
+            `${typeNum} 的类型: ${typeof typeNum}`,
+            `${typeBool} 的类型: ${typeof typeBool}`,
+            `${typeNull} 的类型: ${typeof typeNull} (历史遗留bug)`,
+            `${typeUndef} 的类型: ${typeof typeUndef}`,
+            `对象 的类型: ${typeof typeObj}`,
+            `数组 的类型: ${typeof typeArr} (数组是对象的一种)`
+        ];
+        document.getElementById('type-demo').innerHTML = typeResults.join('<br>');
+
+        // ==================== 三、表达式 ====================
+        let a = 10, b = 3;
+        let exprResults = [];
+
+        // 算术表达式
+        exprResults.push(`算术: ${a} + ${b} * 2 = ${a + b * 2}`);
+        exprResults.push(`取模: ${a} % ${b} = ${a % b}`);
+
+        // 比较表达式
+        exprResults.push(`松散相等: 5 == "5" 结果: ${5 == "5"}`);
+        exprResults.push(`严格相等: 5 === "5" 结果: ${5 === "5"}`);
+
+        // 逻辑表达式
+        let score = 75;
+        let passed = score >= 60 && score < 100;
+        exprResults.push(`逻辑: score=${score}, 及格且不满分: ${passed}`);
+
+        // 三元表达式
+        let level = score >= 90 ? "优秀" : score >= 60 ? "及格" : "不及格";
+        exprResults.push(`三元: score=${score}, 等级: ${level}`);
+
+        document.getElementById('expr-demo').innerHTML = exprResults.join('<br>');
+
+        // ==================== 四、流程控制 ====================
+        let flowResults = [];
+
+        // if-else
+        let testScore = 85;
+        let grade;
+        if (testScore >= 90) {
+            grade = "优秀";
+        } else if (testScore >= 80) {
+            grade = "良好";
+        } else if (testScore >= 60) {
+            grade = "及格";
+        } else {
+            grade = "不及格";
+        }
+        flowResults.push(`if-else: 分数 ${testScore} -> ${grade}`);
+
+        // switch
+        let dayNum = 3;
+        let dayName;
+        switch(dayNum) {
+            case 1: dayName = "星期一"; break;
+            case 2: dayName = "星期二"; break;
+            case 3: dayName = "星期三"; break;
+            case 4: dayName = "星期四"; break;
+            case 5: dayName = "星期五"; break;
+            default: dayName = "周末"; break;
+        }
+        flowResults.push(`switch: 第 ${dayNum} 天 -> ${dayName}`);
+
+        // for 循环
+        let sum = 0;
+        for (let i = 1; i <= 10; i++) {
+            sum += i;
+        }
+        flowResults.push(`for循环: 1+2+...+10 = ${sum}`);
+
+        // while 循环
+        let factorial = 1;
+        let n = 5;
+        let temp = n;
+        while (temp > 1) {
+            factorial *= temp;
+            temp--;
+        }
+        flowResults.push(`while循环: ${n}! = ${factorial}`);
+
+        // for...of
+        let fruits = ["苹果", "香蕉", "橙子"];
+        let fruitList = [];
+        for (let fruit of fruits) {
+            fruitList.push(fruit);
+        }
+        flowResults.push(`for...of: 水果列表 = [${fruitList.join(", ")}]`);
+
+        document.getElementById('flow-demo').innerHTML = flowResults.join('<br>');
+
+        // ==================== 五、函数 ====================
+        let funcResults = [];
+
+        // 函数声明
+        function greet(name) {
+            return "你好, " + name + "!";
+        }
+        funcResults.push(`函数声明: greet("李四") = "${greet("李四")}"`);
+
+        // 函数表达式
+        const calculateArea = function(width, height) {
+            return width * height;
+        };
+        funcResults.push(`函数表达式: calculateArea(5, 3) = ${calculateArea(5, 3)}`);
+
+        // 箭头函数
+        const multiply = (x, y) => x * y;
+        funcResults.push(`箭头函数: multiply(4, 7) = ${multiply(4, 7)}`);
+
+        // 默认参数
+        function welcome(user = "访客", time = "白天") {
+            return `尊敬的${user}，祝您${time}愉快！`;
+        }
+        funcResults.push(`默认参数: welcome() = "${welcome()}"`);
+        funcResults.push(`默认参数: welcome("张三", "晚上") = "${welcome("张三", "晚上")}"`);
+
+        // 回调函数
+        function processArray(arr, processor) {
+            let result = [];
+            for (let item of arr) {
+                result.push(processor(item));
+            }
+            return result;
+        }
+        let numbers = [1, 2, 3, 4, 5];
+        let squares = processArray(numbers, x => x * x);
+        funcResults.push(`回调函数: [1,2,3,4,5] 平方后 = [${squares.join(", ")}]`);
+
+        // 递归函数
+        function fibonacci(n) {
+            if (n <= 1) return n;
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        }
+        funcResults.push(`递归函数: fibonacci(8) = ${fibonacci(8)}`);
+
+        // 闭包
+        function createCounter() {
+            let count = 0;
+            return function() {
+                return ++count;
+            };
+        }
+        let counter = createCounter();
+        funcResults.push(`闭包: counter() 第1次 = ${counter()}, 第2次 = ${counter()}, 第3次 = ${counter()}`);
+
+        document.getElementById('func-demo').innerHTML = funcResults.join('<br>');
+    </script>
+</body>
+</html>
